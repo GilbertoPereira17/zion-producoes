@@ -35,8 +35,26 @@ button{font:inherit;color:inherit}
 .barra nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
 @media (max-width:720px){.barra nav a:not(.sempre){display:none}}
 
+/* ---------- cartaz do prêmio ---------- */
+.cartaz{position:relative;height:clamp(380px,56vw,620px);background:#111 url(../img/fake/moto2.jpg) center 62%/cover;color:#fff}
+.cartaz::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0)),linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%)}
+.cartaz .w{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(30px,5vw,60px)}
+.cartaz .edicao{color:#fff}
+.cartaz h1{font-size:clamp(64px,10vw,150px);margin:12px 0 0;max-width:9ch}
+.cartaz h1 em{font-style:normal;color:var(--tinta);background:var(--zion);padding:0 .08em;white-space:nowrap}
+.fotos-premio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:26px}
+.fotos-premio img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.itens dd img{width:44px;height:30px;object-fit:cover;vertical-align:middle;margin-right:10px}
+/* ---------- próximas edições ---------- */
+.proximas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proximas article img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.proximas article h3{font-size:30px;margin:14px 0 4px}
+.proximas article p{color:var(--meio)}
+.proximas .selo{display:inline-block;margin-top:10px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--zion)}
+@media (max-width:820px){.proximas{grid-template-columns:1fr}}
+
 /* ---------- prêmio ---------- */
-.premio{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(30px,5vw,70px);padding:64px 0 48px;align-items:start}
+.premio{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(30px,5vw,70px);padding:48px 0 48px;align-items:start}
 .edicao{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .premio h1{font-size:clamp(60px,9.5vw,138px);margin:16px 0 22px}
 .premio h1 em{font-style:normal;background:var(--zion);padding:0 .08em;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -142,6 +160,7 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
     <a class="logo" href="../"><img src="../img/logo.jpg" alt=""><span>ZION<br>Rifas</span></a>
     <nav>
       <a href="#cartela">Cartela</a>
+      <a href="#proximas">Próximas</a>
       <a href="#como">Como funciona</a>
       <a class="sempre" href="#meus">Meus números</a>
       <a href="../">Eventos</a>
@@ -150,12 +169,21 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 </header>
 
 <main>
-  <div class="w premio">
-    <div>
+  <div class="cartaz" role="img" aria-label="Moto vermelha 0 km, prêmio da rifa">
+    <div class="w">
       <p class="edicao">Rifa ZION · Edição 01</p>
       <h1 class="cond">Uma moto <em>0&nbsp;km</em> por R$&nbsp;5</h1>
+    </div>
+  </div>
+  <div class="w premio">
+    <div>
+      <div class="fotos-premio">
+        <img src="../img/fake/moto3.jpg" alt="Moto 0 km de lado">
+        <img src="../img/fake/moto1.jpg" alt="Moto 0 km na estrada">
+        <img src="../img/fake/pix.jpg" alt="Pagamento no celular, 2º prêmio em Pix">
+      </div>
       <dl class="itens">
-        <div><dt>1º prêmio</dt><dd>Honda Pop 110i 0 km</dd></div>
+        <div><dt>1º prêmio</dt><dd>Moto 0 km, documentada</dd></div>
         <div><dt>2º prêmio</dt><dd>Pix de R$ 500</dd></div>
         <div><dt>Cada número</dt><dd>R$ 5,00 · 300 números</dd></div>
         <div><dt>Sorteio</dt><dd>15 de novembro, pela Loteria Federal</dd></div>
@@ -201,6 +229,17 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
       </div>
       <div class="cartela" id="grade" aria-label="Números da rifa"></div>
       <p class="escolhidos" id="escolhidos" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="proximas">
+    <div class="w">
+      <div class="cab"><h2 class="cond">Próximas edições</h2><p style="color:var(--meio);max-width:34ch">Quem compra nesta edição fica sabendo das próximas antes de abrir.</p></div>
+      <div class="proximas">
+        <article><img src="../img/fake/som.jpg" alt="Porta-malas com som automotivo completo e luz verde"><h3 class="cond">Som automotivo completo</h3><p>Caixas, módulo e instalação inclusa.</p><span class="selo">Edição 02 · em breve</span></article>
+        <article><img src="../img/fake/celular.jpg" alt="Pagamento por aproximação no celular"><h3 class="cond">Pix de R$ 2.000</h3><p>Caiu na conta no mesmo dia do sorteio.</p><span class="selo">Edição 03 · em breve</span></article>
+        <article><img src="../img/fake/moto1.jpg" alt="Moto vermelha na estrada"><h3 class="cond">Outra moto 0 km</h3><p>A mais pedida volta no fim do ano.</p><span class="selo">Edição 04 · em breve</span></article>
+      </div>
     </div>
   </section>
 
